@@ -1,0 +1,54 @@
+
+
+spring:
+  application:
+    name: second-hand-shop
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+
+
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/postgres'
+    username: user
+    password: postgres
+    hikari:
+      maximum-pool-size: 2
+      validation-timeout: 20000
+
+  jpa:
+    database: postgresql
+    open-in-view: false
+
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+
+    hibernate:
+      ddl-auto: none
+
+  jmx:
+    default-domain: com.webz.Second.Hand.Shop
+    unique-names: false
+    enabled: false
+
+
+  jackson:
+    time-zone: Europe/Rome
+
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+    contexts: local
+    enabled: true
+
+logging:
+  level:
+    org:
+      hibernate: debug
+
